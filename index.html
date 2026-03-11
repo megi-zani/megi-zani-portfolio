@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Megi Zani – Graphic & Web Designer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    :root {
+      --bg: #f5f7fb;
+      --accent: #f6a623;
+      --accent-dark: #1f3b4d;
+      --text-main: #1c1f23;
+      --text-muted: #6b7179;
+      --card-bg: #ffffff;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--text-main);
+      line-height: 1.6;
+    }
+    a { color: var(--accent-dark); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    header {
+      background: linear-gradient(135deg, var(--accent-dark), #09141b);
+      color: #fff;
+      padding: 3.5rem 1.5rem 3rem;
+    }
+    .container { max-width: 1100px; margin: 0 auto; }
+
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2.5rem;
+    }
+    .nav-links a {
+      margin-left: 1.5rem;
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 2fr) minmax(0, 1.3fr);
+      gap: 2rem;
+      align-items: center;
+    }
+    .hero h1 {
+      font-size: 2.4rem;
+      margin-bottom: 0.75rem;
+    }
+    .hero p {
+      color: #e2e6ee;
+      max-width: 32rem;
+      margin-bottom: 1.5rem;
+    }
+    .hero-tags span {
+      display: inline-block;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.2);
+      padding: 0.3rem 0.85rem;
+      font-size: 0.8rem;
+      margin-right: 0.4rem;
+      margin-bottom: 0.4rem;
+    }
+    .hero-cta a {
+      display: inline-block;
+      margin-top: 1.2rem;
+      padding: 0.7rem 1.6rem;
+      border-radius: 999px;
+      font-size: 0.95rem;
+      background: var(--accent);
+      color: #1b1507;
+      font-weight: 600;
+      text-decoration: none;
+    }
+    .hero-cta a.secondary {
+      background: transparent;
+      color: #fff;
+      border: 1px solid rgba(255,255,255,0.4);
+      margin-left: 0.8rem;
+    }
+
+    .hero-preview {
+      background: rgba(0,0,0,0.25);
+      border-radius: 1.2rem;
+      padding: 1.4rem;
+    }
+    .hero-preview-inner {
+      background: #fff;
+      border-radius: 0.9rem;
+      padding: 1rem;
+      color: #222;
+      font-size: 0.85rem;
+    }
+    .hero-preview-title {
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+    }
+    .hero-preview-chip {
+      display: inline-block;
+      font-size: 0.75rem;
+      color: var(--accent-dark);
+      background: rgba(246,166,35,0.16);
+      border-radius: 999px;
+      padding: 0.2rem 0.7rem;
+      margin-top: 0.4rem;
+    }
+
+    section {
+      padding: 3rem 1.5rem 0;
+    }
+    section:last-of-type {
+      padding-bottom: 3rem;
+    }
+    h2.section-title {
+      font-size: 1.6rem;
+      margin-bottom: 0.3rem;
+    }
+    p.section-subtitle {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-bottom: 1.6rem;
+    }
+
+    .grid {
+      display: grid;
+      gap: 1.75rem;
+    }
+
+    /* About */
+    .about-grid {
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+      align-items: flex-start;
+    }
+    .about-card {
+      background: var(--card-bg);
+      border-radius: 1rem;
+      padding: 1.5rem;
+      box-shadow: 0 10px 30px rgba(15,23,42,0.06);
+      font-size: 0.98rem;
+    }
+    .about-meta {
+      display: grid;
+      gap: 0.6rem;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+    .about-meta strong { color: var(--text-main); }
+
+    /* Projects */
+    .projects-grid {
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    }
+    .project-card {
+      background: var(--card-bg);
+      border-radius: 1rem;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(15,23,42,0.06);
+      display: flex;
+      flex-direction: column;
+    }
+    .project-thumb {
+      background: #e2e8f0;
+      padding-top: 60%;
+      position: relative;
+    }
+    .project-thumb span {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      color: #475569;
+      padding: 0 1rem;
+      text-align: center;
+    }
+    .project-body {
+      padding: 1.2rem 1.3rem 1.3rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    .project-title {
+      font-weight: 600;
+      margin-bottom: 0.2rem;
+    }
+    .project-meta {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-bottom: 0.6rem;
+    }
+    .project-body p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 0.8rem;
+    }
+    .project-tags span {
+      display: inline-block;
+      font-size: 0.75rem;
+      background: #edf2ff;
+      color: #364fc7;
+      border-radius: 999px;
+      padding: 0.2rem 0.6rem;
+      margin-right: 0.35rem;
+      margin-bottom: 0.35rem;
+    }
+    .project-link {
+      margin-top: auto;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--accent-dark);
+    }
+
+    /* Skills */
+    .skills-grid {
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    }
+    .skills-card {
+      background: var(--card-bg);
+      border-radius: 1rem;
+      padding: 1.4rem;
+      box-shadow: 0 10px 30px rgba(15,23,42,0.06);
+      font-size: 0.92rem;
+    }
+    .skills-card h3 {
+      font-size: 1rem;
+      margin-bottom: 0.6rem;
+    }
+    .skill-chips span {
+      display: inline-block;
+      margin: 0.2rem 0.35rem 0.2rem 0;
+      padding: 0.25rem 0.65rem;
+      border-radius: 999px;
+      background: #eef2ff;
+      font-size: 0.8rem;
+      color: #3730a3;
+    }
+
+    /* Contact */
+    .contact-card {
+      background: var(--card-bg);
+      border-radius: 1rem;
+      padding: 1.6rem;
+      box-shadow: 0 10px 30px rgba(15,23,42,0.06);
+      font-size: 0.95rem;
+    }
+    .contact-list {
+      margin-top: 0.8rem;
+      font-size: 0.92rem;
+    }
+    .contact-list div { margin-bottom: 0.4rem; }
+
+    footer {
+      text-align: center;
+      padding: 2rem 1.5rem 2.5rem;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    @media (max-width: 800px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
+      .nav { flex-direction: column; align-items: flex-start; gap: 0.6rem; }
+      .nav-links a { margin-left: 0; margin-right: 1.2rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header id="top">
+  <div class="container">
+    <nav class="nav">
+      <div><strong>Megi Zani</strong> · Graphic & Web Design</div>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+
+    <div class="hero">
+      <div>
+        <h1>Visual design for brands that want to stand out.</h1>
+        <p>
+          I am a graphic and web designer who creates clean, story‑driven visuals
+          for brands, from logos and brand identities to social media campaigns
+          and marketing collateral.
+        </p>
+        <div class="hero-tags">
+          <span>Brand Identity</span>
+          <span>Social Media Design</span>
+          <span>Web & UI</span>
+        </div>
+        <div class="hero-cta">
+          <a href="#projects">View selected work</a>
+          <a href="#contact" class="secondary">Let's collaborate</a>
+        </div>
+      </div>
+
+      <div class="hero-preview">
+        <div class="hero-preview-inner">
+          <div class="hero-preview-title">Latest project highlight</div>
+          <div>MastersIETE – website for a university Master's programme, built
+            to communicate a premium academic experience with clear navigation
+            and responsive design.</div>
+          <span class="hero-preview-chip">Live at www.mastersieete.com</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section id="about">
+  <div class="container">
+    <h2 class="section-title">About</h2>
+    <p class="section-subtitle">
+      A design background rooted in marketing, education and visual storytelling.
+    </p>
+
+    <div class="grid about-grid">
+      <div class="about-card">
+        <p>
+          I am a multidisciplinary designer with experience across
+          branding, social media, and web design. I enjoy translating
+          a brand's values into visual systems – from logos and colour
+          palettes to layouts for campaigns, catalogues and digital
+          experiences.
+        </p>
+        <p>
+          Over the last years I have worked with travel agencies,
+          energy companies and professional services, helping them
+          define a consistent, premium visual language across print
+          and digital. I combine a creative eye with solid
+          organisational skills, used to managing projects
+          end‑to‑end from concept to final assets.
+        </p>
+      </div>
+
+      <div class="about-meta">
+        <div><strong>Based in:</strong> Calabria, Italy</div>
+        <div><strong>Working with:</strong> brands in tourism, energy, education and marketing</div>
+        <div><strong>Languages:</strong> Albanian (native), Italian (C2), English (C2)</div>
+        <div><strong>Focus:</strong> clean layouts, strong typography, and clear visual hierarchy</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="container">
+    <h2 class="section-title">Projects</h2>
+    <p class="section-subtitle">
+      A selection of branding, campaign and layout work.
+    </p>
+
+    <div class="grid projects-grid">
+
+      <article class="project-card">
+        <div class="project-thumb">
+          <span>Solar Creative – logo suite and visual identity for a creative studio.</span>
+        </div>
+        <div class="project-body">
+          <div class="project-title">Solar Creative Brand Identity</div>
+          <div class="project-meta">Logo · Colour system · Social mockups</div>
+          <p>
+            Development of a warm, optimistic identity built around a sun symbol.
+            The system includes multiple logo versions for light and dark
+            backgrounds and social media applications.
+          </p>
+          <div class="project-tags">
+            <span>Logo Design</span><span>Branding</span><span>Mockups</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="project-card">
+        <div class="project-thumb">
+          <span>Discover Albania – campaign visuals, posters and social media posts.</span>
+        </div>
+        <div class="project-body">
+          <div class="project-title">Discover Albania Travel Agency</div>
+          <div class="project-meta">Brand assets · Social media · Print</div>
+          <p>
+            Visual identity and campaign materials for a travel agency, including
+            logo applications, promotional posts and posters that highlight
+            Albanian landscapes and experiences.
+          </p>
+          <div class="project-tags">
+            <span>Travel</span><span>Social Media</span><span>Print Design</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="project-card">
+        <div class="project-thumb">
+          <span>Pro Net Marketing – logo and business card design for a marketing firm.</span>
+        </div>
+        <div class="project-body">
+          <div class="project-title">Pro Net Marketing Identity</div>
+          <div class="project-meta">Logo · Stationery</div>
+          <p>
+            Creation of a geometric, network‑inspired symbol and clean
+            typography to position the brand as modern and reliable, applied to
+            business cards and digital assets.
+          </p>
+          <div class="project-tags">
+            <span>Logo</span><span>Corporate Identity</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="project-card">
+        <div class="project-thumb">
+          <span>MastersIETE – institutional website for an academic Master's programme.</span>
+        </div>
+        <div class="project-body">
+          <div class="project-title">MastersIETE Website</div>
+          <div class="project-meta">Web design · Content layout</div>
+          <p>
+            Design and structure for a university programme website with clear
+            navigation, responsive layouts and sections tailored to prospective
+            students, partners and faculty.
+          </p>
+          <div class="project-tags">
+            <span>Web Design</span><span>UI</span>
+          </div>
+          <a class="project-link" href="https://www.mastersieete.com" target="_blank" rel="noopener">
+            Visit website →
+          </a>
+        </div>
+      </article>
+
+      <article class="project-card">
+        <div class="project-thumb">
+          <span>Creta Energie Speciali – social media visuals for solar energy campaigns.</span>
+        </div>
+        <div class="project-body">
+          <div class="project-title">Energy Campaign Social Posts</div>
+          <div class="project-meta">Social campaigns · Ads</div>
+          <p>
+            Design of social media posts promoting solar energy incentives, with
+            bold typography and iconography to make technical information easy
+            to understand at a glance.
+          </p>
+          <div class="project-tags">
+            <span>Advertising</span><span>Social Media</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="project-card">
+        <div class="project-thumb">
+          <span>Interior mockups and digital compositions for visual storytelling.</span>
+        </div>
+        <div class="project-body">
+          <div class="project-title">Conceptual & Interior Visuals</div>
+          <div class="project-meta">Mockups · Photo compositing</div>
+          <p>
+            Creation of interior scenes and conceptual compositions to present
+            artwork, branding and campaign ideas in a realistic, engaging way
+            for clients.
+          </p>
+          <div class="project-tags">
+            <span>Mockups</span><span>Photo Editing</span>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="container">
+    <h2 class="section-title">Skills</h2>
+    <p class="section-subtitle">
+      Tools and strengths I bring to each project.
+    </p>
+
+    <div class="grid skills-grid">
+      <div class="skills-card">
+        <h3>Design & Branding</h3>
+        <p>
+          From logo concepts to complete visual systems, with attention to
+          colour, typography and consistency across all touchpoints.
+        </p>
+        <div class="skill-chips">
+          <span>Logo Design</span><span>Brand Guidelines</span><span>Visual Identity</span>
+          <span>Layout Design</span><span>Print</span>
+        </div>
+      </div>
+
+      <div class="skills-card">
+        <h3>Digital & Social</h3>
+        <p>
+          Creation of campaign visuals, social media posts and simple landing
+          pages that communicate clearly and feel on‑brand.
+        </p>
+        <div class="skill-chips">
+          <span>Social Media Assets</span><span>Advertising Creatives</span>
+          <span>Web Design</span><span>Responsive Layouts</span>
+        </div>
+      </div>
+
+      <div class="skills-card">
+        <h3>Tools</h3>
+        <p>
+          Comfortable working across the Adobe ecosystem and office tools, from
+          early concepts to final production files.
+        </p>
+        <div class="skill-chips">
+          <span>Adobe Illustrator</span><span>Photoshop</span><span>InDesign</span>
+          <span>Canva</span><span>Microsoft Office</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="container">
+    <h2 class="section-title">Contact</h2>
+    <p class="section-subtitle">
+      For collaborations, freelance projects or remote roles, feel free to get in touch.
+    </p>
+
+    <div class="contact-card">
+      <p>
+        I am available for remote collaborations with agencies, studios and
+        brands that value clear communication, reliability and thoughtful
+        design. Share a brief about your project and I will get back to you
+        with ideas and timelines.
+      </p>
+      <div class="contact-list">
+        <div><strong>Email:</strong> <a href="mailto:megi.zani@hotmail.com">megi.zani@hotmail.com</a></div>
+        <div><strong>Location:</strong> Calabria, Italy (working with international clients)</div>
+        <div><strong>Website:</strong> <a href="https://www.mastersieete.com" target="_blank" rel="noopener">www.mastersieete.com</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  © <span id="year"></span> Megi Zani · Portfolio
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
